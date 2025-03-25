@@ -1,0 +1,27 @@
+Esta guia son los pasos para poder ejecutar el proyecto Panaderia en Python, se debe tener instalado Python en la maquina, se debe tener instalado el modulo rich, para instalarlo se debe seguir los siguientes pasos:
+
+1. 
+    ```pip-requirements
+    rich>=13.0.0
+    ```
+
+2. **Abre una terminal o línea de comandos**.
+
+3. **Navega al directorio donde está el archivo `requirements.txt`**:
+    ```bash
+    cd /e:/Usuario/Downloads/exampole-20250325T002933Z-001/exampole/
+    ```
+
+4. **Instala las dependencias usando `pip`**:
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+5. **Verifica que la librería `rich` se haya instalado correctamente**:
+    ```bash
+    pip show rich
+    ```
+
+Fuente: [rich](https://pypi.org/project/rich/)
+Fin de la guia.
+## Ejecutar el proyecto

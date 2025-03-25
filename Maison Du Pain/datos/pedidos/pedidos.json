@@ -1,0 +1,25 @@
+{
+    "pedidos": [
+        {
+            "codigo_pedido": "PED-001",
+            "codigo_cliente": "CLI-001",
+            "fecha_pedido": "2024-03-21 15:30:00",
+            "estado": "pendiente",
+            "total": 150.0
+        },
+        {
+            "codigo_pedido": "PED-002",
+            "codigo_cliente": "CLI-002",
+            "fecha_pedido": "2024-03-21 16:45:00",
+            "estado": "en_proceso",
+            "total": 275.5
+        },
+        {
+            "codigo_pedido": "PED-003",
+            "codigo_cliente": "001",
+            "fecha_pedido": "2025-03-25 02:32:59",
+            "estado": "pendiente",
+            "total": 0.0
+        }
+    ]
+}

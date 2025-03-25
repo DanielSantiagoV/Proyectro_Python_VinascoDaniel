@@ -1,0 +1,336 @@
+==============================================================
+EXPLICACIÓN DEL SISTEMA DE GESTIÓN DE PANADERÍA "MAISON DU PAIN"
+==============================================================
+
+Este documento explica detalladamente la estructura y funcionamiento del sistema de gestión
+para la panadería "Maison du Pain", incluyendo cada archivo, módulo y sus respectivas funciones.
+
+========================================
+ESTRUCTURA GENERAL DEL PROYECTO
+========================================
+
+El proyecto sigue una estructura modular que separa las diferentes funcionalidades:
+
+1. main.py: Archivo principal que inicia la aplicación y maneja el menú principal
+2. modulos/: Carpeta que contiene los módulos específicos
+   - __init__.py: Permite que Python reconozca la carpeta como un paquete
+   - gestion_archivos.py: Maneja la persistencia de datos en archivos JSON
+   - gestion_productos.py: Gestiona todas las operaciones relacionadas con productos
+   - gestion_pedidos.py: Gestiona todas las operaciones relacionadas con pedidos
+3. datos/: Carpeta que almacena los archivos JSON con los datos
+   - datos_panaderia.json: Archivo principal de datos
+   - pedidos/: Subcarpeta para datos de pedidos
+     - pedidos.json: Información general de pedidos
+     - detalles_pedidos.json: Detalles específicos de cada pedido
+
+========================================
+EXPLICACIÓN DEL ARCHIVO main.py
+========================================
+
+Este archivo es el punto de entrada de la aplicación y contiene:
+
+1. Importaciones:
+   - Librerías de Rich para mejorar la visualización (console, text, panel)
+   - Módulos propios para gestión de archivos, productos y pedidos
+
+2. Función mostrar_banner():
+   - Muestra un banner ASCII con el nombre "MAISON DU PAIN" en rojo
+   - Utiliza Text y Panel de Rich para dar formato
+   - El texto se muestra centrado y con un ancho de 90 caracteres
+   - Incluye emojis en el título y subtítulo
+
+3. Función mostrar_menu_principal():
+   - Muestra las opciones del menú principal
+   - Usa formateo de Rich para añadir colores
+   - Incluye emojis para cada opción
+   - Retorna la opción seleccionada por el usuario
+
+4. Función main():
+   - Inicia mostrando el banner de bienvenida
+   - Carga los datos desde los archivos JSON
+   - Entra en un bucle para mostrar el menú principal y procesar opciones
+   - Gestiona la navegación entre los diferentes módulos
+   - Al salir, muestra un mensaje de despedida
+
+5. Bloque if __name__ == "__main__":
+   - Asegura que la función main() se ejecute solo cuando se inicia el script directamente
+   - Es una práctica estándar de Python para evitar ejecuciones accidentales al importar
+
+========================================
+EXPLICACIÓN DEL MÓDULO gestion_archivos.py
+========================================
+
+Este módulo maneja la persistencia de datos en archivos JSON:
+
+1. Importaciones:
+   - json: Para manejar la serialización y deserialización de datos
+   - os: Para operaciones con el sistema de archivos (crear directorios)
+
+2. Función cargar_datos():
+   - Lee el archivo datos_panaderia.json
+   - Maneja excepciones si el archivo no existe o está corrupto
+   - En caso de error, crea una estructura inicial de datos
+   - Retorna los datos cargados como un diccionario Python
+
+3. Función guardar_datos():
+   - Asegura que el directorio datos/ exista
+   - Guarda los datos en formato JSON con formato legible (indent=4)
+   - Maneja correctamente caracteres especiales (ensure_ascii=False)
+
+4. Función crear_estructura_inicial():
+   - Crea un diccionario vacío con la estructura básica: productos y pedidos
+   - Guarda esta estructura en el archivo
+   - Retorna la estructura creada
+
+5. Funciones para pedidos específicos:
+   - cargar_pedidos() y cargar_detalles_pedidos(): Cargan datos de archivos JSON específicos
+   - guardar_pedidos() y guardar_detalles_pedidos(): Guardan datos en sus respectivos archivos
+   - Cada función maneja la creación de directorios si no existen
+
+========================================
+EXPLICACIÓN DEL MÓDULO gestion_productos.py
+========================================
+
+Este módulo gestiona todas las operaciones relacionadas con productos:
+
+1. Importaciones:
+   - Rich (console, table): Para mejorar la visualización
+   - datetime: Para registrar fechas y horas
+
+2. Función updateQuantityInventory():
+   - Actualiza el stock de manera segura
+   - Solo permite incrementos positivos (protección contra valores negativos)
+   - Retorna el stock actualizado
+
+3. Función mostrar_menu_productos():
+   - Muestra las opciones disponibles para gestión de productos
+   - Usa Rich para colorear y formatear el texto
+   - Incluye emojis para cada opción
+   - Retorna la opción seleccionada
+
+4. Función generar_codigo_producto():
+   - Genera un código único para cada producto basado en su categoría
+   - Busca el último número usado para cada categoría
+   - Pide al usuario que seleccione una categoría (pan, pastel, postre)
+   - Retorna un código en formato "CATEGORIA-NNN" (ejemplo: "PAN-001")
+
+5. Función agregar_producto():
+   - Solicita al usuario todos los datos necesarios para un nuevo producto
+   - Genera un código único llamando a generar_codigo_producto()
+   - Crea un diccionario con todos los datos del producto
+   - Añade el producto a la lista de productos
+   - Muestra mensaje de éxito
+
+6. Función listar_productos():
+   - Muestra todos los productos en una tabla formateada
+   - Usa Rich Table para crear una tabla con columnas coloreadas
+   - Itera sobre todos los productos para mostrarlos
+   - Muestra opciones adicionales al finalizar
+   - Retorna la opción seleccionada
+
+7. Función mostrar_lista_productos():
+   - Similar a listar_productos() pero sin pedir opciones al final
+   - Creada específicamente para ser usada dentro de otras funciones
+   - Evita conflictos con el retorno de input()
+
+8. Función buscar_producto():
+   - Permite buscar productos por código o nombre
+   - Realiza búsqueda insensible a mayúsculas/minúsculas
+   - Muestra resultados en una tabla formateada
+   - Alerta sobre productos con stock bajo (menos de 5 unidades)
+
+9. Función editar_producto():
+   - Busca un producto por su código
+   - Permite modificar todos sus datos (nombre, descripción, stock, precios, etc.)
+   - Usa updateQuantityInventory() para actualizar el stock de manera segura
+   - Muestra mensaje de éxito o error
+
+10. Función eliminar_producto():
+    - Muestra la lista de productos usando mostrar_lista_productos()
+    - Pide el código del producto a eliminar
+    - Muestra los detalles del producto seleccionado
+    - Pide confirmación antes de eliminar
+    - Elimina el producto si se confirma
+    - Muestra mensaje de éxito o error
+
+11. Función gestionar_productos():
+    - Punto de entrada principal del módulo
+    - Muestra el menú de productos y procesa las opciones
+    - Llama a las funciones correspondientes según la opción elegida
+    - Maneja un bucle hasta que el usuario elija volver al menú principal
+
+========================================
+EXPLICACIÓN DEL MÓDULO gestion_pedidos.py
+========================================
+
+Este módulo gestiona todas las operaciones relacionadas con pedidos:
+
+1. Importaciones:
+   - Rich (console, table): Para mejorar la visualización
+   - datetime: Para registrar fechas y horas de pedidos
+   - Funciones del módulo gestion_archivos para cargar y guardar datos
+
+2. Función mostrar_menu_pedidos():
+   - Muestra las opciones disponibles para gestión de pedidos
+   - Usa Rich para colorear y formatear el texto
+   - Incluye emojis para cada opción
+   - Retorna la opción seleccionada
+
+3. Función generar_codigo_pedido():
+   - Genera un código único para cada pedido
+   - Busca el último número usado en los pedidos existentes
+   - Retorna un código en formato "PED-NNN" (ejemplo: "PED-001")
+
+4. Función crear_pedido():
+   - Carga los datos actuales de pedidos y detalles
+   - Solicita el código del cliente
+   - Crea un pedido con fecha actual y estado "pendiente"
+   - Permite agregar múltiples productos al pedido
+   - Verifica existencia y stock de productos
+   - Calcula subtotales y actualiza el stock automáticamente
+   - Guarda los cambios en los archivos JSON
+   - Muestra mensaje de éxito
+
+5. Función listar_pedidos():
+   - Carga los datos actuales de pedidos y detalles
+   - Muestra todos los pedidos en una tabla formateada
+   - Incluye código, cliente, fecha, estado y total
+   - Ofrece la opción de ver detalles de un pedido específico
+
+6. Función mostrar_detalles_pedido():
+   - Muestra los productos incluidos en un pedido específico
+   - Presenta la información en una tabla formateada
+   - Incluye número de línea, producto, cantidad, precio y subtotal
+
+7. Función buscar_pedido():
+   - Permite buscar pedidos por código o código de cliente
+   - Muestra resultados en una tabla formateada
+   - Ofrece la opción de ver detalles del pedido encontrado
+
+8. Función editar_pedido():
+   - Permite cambiar el estado de un pedido (pendiente, en proceso, entregado)
+   - Muestra un menú para seleccionar el nuevo estado
+   - Guarda los cambios en el archivo JSON
+   - Muestra mensaje de éxito o error
+
+9. Función eliminar_pedido():
+   - Pide el código del pedido a eliminar
+   - Solicita confirmación antes de eliminar
+   - Elimina tanto el pedido como sus detalles
+   - Guarda los cambios en los archivos JSON
+   - Muestra mensaje de éxito o error
+
+10. Función gestionar_pedidos():
+    - Punto de entrada principal del módulo
+    - Muestra el menú de pedidos y procesa las opciones
+    - Llama a las funciones correspondientes según la opción elegida
+    - Maneja un bucle hasta que el usuario elija volver al menú principal
+
+========================================
+ESTRUCTURA DE LOS DATOS
+========================================
+
+1. Productos:
+   ```
+   {
+     "codigo_producto": "PAN-001",
+     "nombre": "Pan Francés",
+     "categoria": "pan",
+     "descripcion": "Pan tradicional francés",
+     "proveedor": "Panadería Local",
+     "cantidad_en_stock": 50,
+     "precio_venta": 3.50,
+     "precio_proveedor": 2.00
+   }
+   ```
+
+2. Pedidos:
+   ```
+   {
+     "codigo_pedido": "PED-001",
+     "codigo_cliente": "CLI-001",
+     "fecha_pedido": "2024-03-21 15:30:00",
+     "estado": "pendiente",
+     "total": 150.00
+   }
+   ```
+
+3. Detalles de Pedido:
+   ```
+   {
+     "codigo_pedido": "PED-001",
+     "detalles": [
+       {
+         "numero_linea": 1,
+         "codigo_producto": "PAN-001",
+         "cantidad": 2,
+         "precio_unidad": 3.50,
+         "subtotal": 7.00
+       }
+     ]
+   }
+   ```
+
+========================================
+CORRECCIONES Y MEJORAS IMPLEMENTADAS
+========================================
+
+Durante el desarrollo, se han implementado varias mejoras:
+
+1. Arreglo del banner ASCII:
+   - Se creó un banner bien formateado para "MAISON DU PAIN"
+   - Se aplicó color rojo para hacerlo más atractivo
+   - Se centró para mejorar la visualización
+
+2. Corrección en eliminar_producto:
+   - Se creó la función mostrar_lista_productos para evitar conflictos
+   - Se separó la visualización de productos de la solicitud de opciones
+   - Esto resolvió el problema al intentar eliminar productos
+
+3. Mejora en updateQuantityInventory:
+   - Se implementó una función para actualizar el stock de manera segura
+   - Previene actualizaciones negativas del stock
+   - Centraliza la lógica de actualización de inventario
+
+4. Estructura modular mejorada:
+   - Se reorganizó el código en módulos específicos
+   - Se mejoró la separación de responsabilidades
+   - Se crearon funciones específicas para cada tarea
+
+5. Alertas de stock bajo:
+   - Se agregó funcionalidad para detectar productos con menos de 5 unidades
+   - Muestra alertas visuales para facilitar la gestión de inventario
+
+========================================
+PRINCIPIOS DE PROGRAMACIÓN APLICADOS
+========================================
+
+1. Modularidad:
+   - Código organizado en módulos con responsabilidades específicas
+   - Funciones bien definidas que realizan una sola tarea
+   - Reutilización de código donde es posible
+
+2. Persistencia de datos:
+   - Uso de archivos JSON para almacenar información entre sesiones
+   - Estructura organizada para diferentes tipos de datos
+   - Manejo de errores para archivos no encontrados o corruptos
+
+3. Interfaz de usuario:
+   - Uso de Rich para mejorar la visualización con colores y formatos
+   - Tablas bien estructuradas para mostrar información
+   - Mensajes claros de éxito y error
+   - Uso de emojis para mejorar la experiencia visual
+
+4. Validación de datos:
+   - Verificación de stock antes de procesar pedidos
+   - Generación de códigos únicos para productos y pedidos
+   - Manejo de errores y casos excepcionales
+
+5. Consultas y búsquedas:
+   - Funcionalidad para buscar productos y pedidos
+   - Filtrado por diferentes criterios (código, nombre, cliente)
+   - Visualización detallada de resultados
+
+Este sistema cumple con todos los requisitos especificados en las instrucciones originales,
+incluyendo gestión de productos y pedidos, inventario automatizado, persistencia de datos,
+y una interfaz visual mejorada. 
