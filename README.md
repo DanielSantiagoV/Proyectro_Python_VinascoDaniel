@@ -5,67 +5,67 @@ Sistema desarrollado en Python para administrar el inventario y pedidos de la pa
 ## 🌟 Características Principales
 
 ### 📦 Gestión de Productos
-- Registro completo de productos de panadería (panes, pasteles, postres, etc.).
-- Almacenamiento de información detallada:
-  - Nombre del producto
-  - Categoría (pan, pastel, postre)
-  - Descripción
-  - Proveedor
-  - Cantidad en stock
-  - Precios de venta y compra
-- Generación automática de códigos de producto basados en categoría (PN-001, PS-001, PT-001).
-- Funcionalidades:
-  - Agregar, editar y eliminar productos.
-  - Listado detallado de productos registrados.
+- 📌 Registro completo de productos de panadería (panes, pasteles, postres, etc.).
+- 📂 Almacenamiento de información detallada:
+  - 🏷️ Nombre del producto
+  - 🏗️ Categoría (pan, pastel, postre)
+  - 📝 Descripción
+  - 🏭 Proveedor
+  - 📦 Cantidad en stock
+  - 💰 Precios de venta y compra
+- 🔢 Generación automática de códigos de producto basados en categoría (PN-001, PS-001, PT-001).
+- ⚙️ Funcionalidades:
+  - ➕ Agregar, ✏️ editar y ❌ eliminar productos.
+  - 📋 Listado detallado de productos registrados.
 
 ### 📝 Gestión de Pedidos
-- Creación y administración de pedidos de clientes.
-- Registro detallado de productos en cada pedido:
-  - Cantidad
-  - Precio por unidad
-  - Número de línea
-- Funcionalidades completas de edición y eliminación de pedidos.
-- Cálculo automático de totales en cada compra.
+- 🛍️ Creación y administración de pedidos de clientes.
+- 📄 Registro detallado de productos en cada pedido:
+  - 🔢 Cantidad
+  - 💲 Precio por unidad
+  - #️⃣ Número de línea
+- 🔄 Funcionalidades completas de edición y eliminación de pedidos.
+- 🧮 Cálculo automático de totales en cada compra.
 
 ### 📊 Inventario Automatizado
-- Actualización automática del stock al registrar pedidos.
-- Control de inventario en tiempo real.
-- Sistema de alertas para productos con stock bajo (menos de 5 unidades).
-- Devolución automática de stock al eliminar pedidos.
+- 🔄 Actualización automática del stock al registrar pedidos.
+- 📈 Control de inventario en tiempo real.
+- ⚠️ Sistema de alertas para productos con stock bajo (menos de 5 unidades).
+- 🔙 Devolución automática de stock al eliminar pedidos.
 
 ### 🔍 Consultas y Búsquedas
-- Búsqueda flexible de productos:
-  - Por nombre
-  - Por categoría
-  - Por código
-- Filtrado de pedidos:
-  - Por código de pedido
-  - Por productos incluidos
-- Visualización detallada de información.
+- 🔎 Búsqueda flexible de productos:
+  - 🔤 Por nombre
+  - 🏷️ Por categoría
+  - 🔢 Por código
+- 📑 Filtrado de pedidos:
+  - #️⃣ Por código de pedido
+  - 🛒 Por productos incluidos
+- 📊 Visualización detallada de información.
 
 ### 💾 Manejo de Archivos y Persistencia
-- Almacenamiento de datos en formato JSON.
-- Estructura organizada de archivos:
-  - `datos_panaderia.json`: Información de productos.
-  - `pedidos.json`: Registro de pedidos.
-- Persistencia de datos entre sesiones.
-- Manejo de errores y validaciones.
+- 🗂️ Almacenamiento de datos en formato JSON.
+- 📂 Estructura organizada de archivos:
+  - `📜 datos_panaderia.json`: Información de productos.
+  - `📜 pedidos.json`: Registro de pedidos.
+- ♻️ Persistencia de datos entre sesiones.
+- ✅ Manejo de errores y validaciones.
 
 ### 👥 Interfaz de Usuario
-- Menús intuitivos y organizados.
-- Confirmaciones para acciones críticas.
-- Mensajes informativos claros.
-- Tablas formateadas para mejor visualización.
-- Uso de colores y emojis para mejor experiencia.
+- 🏠 Menús intuitivos y organizados.
+- ✅ Confirmaciones para acciones críticas.
+- ℹ️ Mensajes informativos claros.
+- 📊 Tablas formateadas para mejor visualización.
+- 🎨 Uso de colores y emojis para mejor experiencia.
 
 ## 🛠️ Tecnologías Utilizadas
-- **Python 3**
-- **JSON** para almacenamiento de datos.
-- **Rich** para mejorar la visualización en la terminal.
+- 🐍 **Python 3**
+- 📄 **JSON** para almacenamiento de datos.
+- 🎨 **Rich** para mejorar la visualización en la terminal.
 
 ## 📋 Requisitos
-- Python 3.6 o superior.
-- Instalar dependencias con:
+- 🖥️ Python 3.6 o superior.
+- 📦 Instalar dependencias con:
   ```sh
   pip install rich
 
@@ -154,30 +154,33 @@ maison-du-pain/
     }
   ]
 }
-`````
+```
 
+``````
 ### 📄 Creado Por:
 Este Proyecto fue desarrollado por ***Daniel Santiago Vinasco*** 
 
 -------------------------------------------------------
 
+---
 
 ---
 
+### Aquí tienes la sección modificada para que refleje mejor las funcionalidades de tu sistema de gestión de panadería:  
 
 ---
 
-### ✅ **¿Qué cambios hice en el README?**
-✔ **Formato unificado** siguiendo la estructura del README de referencia.  
-✔ **Secciones más organizadas** con información clara y concisa.  
-✔ **Emojis en títulos** para una presentación más visual.  
-✔ **Consistencia en estilo y redacción** con el README de referencia.  
-✔ **Mayor claridad en la estructura de datos y ejemplos JSON.**  
+### ✅ ¿Qué incluye este README?
+✔ 📋 Características detalladas del sistema de gestión de panadería.  
+✔ 📁 Estructura del proyecto clara y organizada para una fácil navegación.  
+✔ 🖥️ Código del menú principal con opciones intuitivas para la administración.  
+✔ 📊 Funciones clave como gestión de productos, pedidos e inventario automatizado.  
+✔ 🔍 Consultas y búsquedas de productos y pedidos con filtros flexibles.  
+✔ 💾 Estructura de los JSON con ejemplos detallados de productos y pedidos.  
+✔ 🚀 Instalación y uso con pasos claros para ejecutar el sistema.  
+✔ 🎨 Estética profesional con emojis y formato Markdown limpio para una mejor experiencia visual.  
 
----
 
-
----
 ----------------------------------------------
 
 
