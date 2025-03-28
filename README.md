@@ -156,7 +156,6 @@ maison-du-pain/
 }
 ```
 
-``````
 ### 📄 Creado Por:
 Este Proyecto fue desarrollado por ***Daniel Santiago Vinasco*** 
 
