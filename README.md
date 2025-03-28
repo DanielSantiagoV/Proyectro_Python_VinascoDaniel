@@ -163,12 +163,7 @@ Este Proyecto fue desarrollado por ***Daniel Santiago Vinasco***
 
 ---
 
----
-
-### Aquí tienes la sección modificada para que refleje mejor las funcionalidades de tu sistema de gestión de panadería:  
-
----
-
+### ·README_Incluye:
 ### ✅ ¿Qué incluye este README?
 ✔ 📋 Características detalladas del sistema de gestión de panadería.  
 ✔ 📁 Estructura del proyecto clara y organizada para una fácil navegación.  
